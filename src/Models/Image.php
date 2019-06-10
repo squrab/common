@@ -8,7 +8,7 @@
 
 namespace SquRab\Models;
 
-use SquRab\Services\QiniuService;
+use SquRab\Services\QiNiu;
 use Exception;
 
 class Image extends BaseModel
@@ -35,7 +35,7 @@ class Image extends BaseModel
                     'small_path' => config('filesystems.disks.qiniu.domain') . '/' . $img['small_path']
                 ];
             case 3:
-                $qiNiu = new QiniuService('qiniu_pvt');
+                $qiNiu = new QiNiu('qiniu_pvt');
                 return [
                     'pic_path' => $qiNiu->getPrivateUrl($img['pic_path']),
                     'small_path' => $qiNiu->getPrivateUrl($img['small_path'])
