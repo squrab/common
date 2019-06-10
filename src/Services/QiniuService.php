@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace SquRab\Services;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;

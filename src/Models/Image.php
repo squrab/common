@@ -22,7 +22,7 @@ class Image extends BaseModel
      */
     public function getImageSite(int $id)
     {
-        $img = $this->find($id, ['pic_path', 'small_path', 'path_type'])->toArray();
+        $img = $this::query()->find($id, ['pic_path', 'small_path', 'path_type'])->toArray();
         if (empty($img))
             throw new \Exception('图片id不存在');
         switch ($img['path_type']) {
