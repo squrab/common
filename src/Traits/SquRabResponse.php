@@ -6,7 +6,7 @@
  * Time: 11:01
  */
 
-namespace SquRab;
+namespace SquRab\Traits;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -30,7 +30,7 @@ const ERROR_CODE_TYPE = [
     ''
 ];
 
-trait SquRabResponse
+trait Response
 {
     /**
      * 错误相应
