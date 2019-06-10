@@ -7,6 +7,8 @@
  * Use: 公共功能函数
  */
 
+namespace SquRab\Traits;
+
 use SquRab\Models\User;
 use SquRab\Models\Coupon;
 use GuzzleHttp\Client as HttpClient;
