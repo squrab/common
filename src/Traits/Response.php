@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 define('SUCCESS_CODE', 10000);//正常相应
 
-define('UNKNOWN_ERROR', 20000);//业务处理失败
+define('UNKNOWN_ERROR_CODE', 20000);//业务处理失败
 define('INVALID_TOKEN_CODE', 20001);//无效的访问令牌
 
 define('INVALID_PARAMETER_CODE', 40001);//参数无效
@@ -25,10 +25,6 @@ define('METHOD_NOT_ALLOWED_CODE', 50003);//请求方法错误
 define('NOT_FOUND_HTTP_CODE', 50004);//路由未找到
 
 const HEADERS = [];
-
-const ERROR_PARAMETER_CODE_TYPE = [
-    ''
-];
 
 trait Response
 {
