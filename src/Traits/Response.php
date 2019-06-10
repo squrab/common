@@ -26,7 +26,7 @@ define('NOT_FOUND_HTTP_CODE', 50004);//路由未找到
 
 const HEADERS = [];
 
-const ERROR_CODE_TYPE = [
+const ERROR_PARAMETER_CODE_TYPE = [
     ''
 ];
 
