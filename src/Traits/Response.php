@@ -71,8 +71,10 @@ trait Response
     {
         $param = $request->all();
         $validator = Validator::make($param, $rule, $messages)->errors()->toArray();
-        if ($validator)
-            return mb_convert_encoding(strtoupper(str_replace(' ', '_', current($validator))), "UTF-8");
+        if ($validator) {
+            $str = current($validator);
+            return strtoupper(str_replace(' ', '_', $str));
+        }
         return false;
     }
 }
