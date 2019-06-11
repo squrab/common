@@ -71,8 +71,11 @@ trait Response
     {
         $param = $request->all();
         $validator = Validator::make($param, $rule, $messages)->errors()->toArray();
-        if ($validator)
-            return strtoupper(str_replace(' ', '_', $validator[0]));
+        if ($validator) {
+            foreach ($validator as $value) {
+                return str_replace('.', '', strtoupper(str_replace(' ', '_', current($value))));
+            }
+        }
         return false;
     }
 }
