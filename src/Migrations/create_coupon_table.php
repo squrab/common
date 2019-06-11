@@ -17,7 +17,7 @@ class CreateCouponTable extends Migration
             $table->increments('id');
             $table->unsignedBigInteger('coupon_sn')->comment('逻辑编号');
             $table->string('name', 20)->comment('优惠券名称');
-            $table->unsignedTinyInteger('coupon_type')->comment('优惠券类型：1.货运、2.货运');
+            $table->unsignedTinyInteger('coupon_type')->comment('优惠券类型：0.通用、1.帮送、2.帮取、3帮买');
             $table->unsignedInteger('constraint_id')->default(0)->comment('约束编号,0.无约束');
             $table->unsignedTinyInteger('offer_type')->comment('优惠类型：1.满减、2.折扣');
             $table->unsignedDecimal('available_money', 10, 2)->default(0)->comment('满减条件');
