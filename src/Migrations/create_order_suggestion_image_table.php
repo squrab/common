@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -18,7 +19,7 @@ class CreateOrderSuggestionImageTable extends Migration
             $table->unsignedInteger('image_id')->comment("图片表id");
         });
 
-        \DB::statement("ALTER TABLE `order_suggestion_image` comment '订单投诉图片表'");
+        DB::statement("ALTER TABLE `order_suggestion_image` comment '订单投诉图片表'");
     }
 
     /**

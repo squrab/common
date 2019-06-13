@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Silber\Bouncer\Database\Models;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -74,10 +76,10 @@ class CreateBouncerTables extends Migration
                 ->onUpdate('cascade')->onDelete('cascade');
         });
 
-        \DB::statement("ALTER TABLE `abilities` comment '后台管理权限表'");
-        \DB::statement("ALTER TABLE `roles` comment '后台管理角色表'");
-        \DB::statement("ALTER TABLE `assigned_roles` comment '角色对应用户表'");
-        \DB::statement("ALTER TABLE `permissions` comment '角色权限表'");
+        DB::statement("ALTER TABLE `abilities` comment '后台管理权限表'");
+        DB::statement("ALTER TABLE `roles` comment '后台管理角色表'");
+        DB::statement("ALTER TABLE `assigned_roles` comment '角色对应用户表'");
+        DB::statement("ALTER TABLE `permissions` comment '角色权限表'");
     }
 
     /**

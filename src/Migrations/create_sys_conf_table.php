@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -23,7 +24,7 @@ class CreateSysConfTable extends Migration
             $table->unique('c_key');
         });
 
-        \DB::statement("ALTER TABLE `sys_conf` comment '系统逻辑参数表'");
+        DB::statement("ALTER TABLE `sys_conf` comment '系统逻辑参数表'");
 
         DB::table("sys_conf")->insert([
             "c_key"=>"starting_mileage",

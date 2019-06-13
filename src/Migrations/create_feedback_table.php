@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -25,7 +26,7 @@ class CreateFeedbackTable extends Migration
             $table->index('user_id');
         });
 
-        \DB::statement("ALTER TABLE `feedback` comment '用户反馈信息表'");
+        DB::statement("ALTER TABLE `feedback` comment '用户反馈信息表'");
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -27,7 +28,7 @@ class CreateCompanyInfoTable extends Migration
             $table->unique('user_id');
         });
 
-        \DB::statement("ALTER TABLE `company_info` comment '企业用户信息表'");
+        DB::statement("ALTER TABLE `company_info` comment '企业用户信息表'");
     }
 
     /**

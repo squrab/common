@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -25,7 +26,7 @@ class CreateCertificationAuditTable extends Migration
             $table->timestamps();
         });
 
-        \DB::statement("ALTER TABLE `certification_audit` comment '认证审核表'");
+        DB::statement("ALTER TABLE `certification_audit` comment '认证审核表'");
     }
 
     /**

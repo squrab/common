@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -23,7 +24,7 @@ class CreateJoinInTable extends Migration
             $table->timestamps();
         });
 
-        \DB::statement("ALTER TABLE `join_in` comment '加入我们活动记录表'");
+        DB::statement("ALTER TABLE `join_in` comment '加入我们活动记录表'");
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -32,7 +33,7 @@ class CreateOrderShippingTable extends Migration
             $table->timestamps();
         });
 
-        \DB::statement("ALTER TABLE `order_shipping` comment '订单配送信息表'");
+        DB::statement("ALTER TABLE `order_shipping` comment '订单配送信息表'");
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -21,7 +22,7 @@ class CreateFeedbackTypeTable extends Migration
             $table->timestamps();
         });
 
-        \DB::statement("ALTER TABLE `feedback_type` comment '用户反馈类型表'");
+        DB::statement("ALTER TABLE `feedback_type` comment '用户反馈类型表'");
 
         DB::table('feedback_type')->insert(
             [

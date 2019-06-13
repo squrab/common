@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -24,7 +25,7 @@ class CreateAppVersionTable extends Migration
             $table->timestamps();
         });
 
-        \DB::statement("ALTER TABLE `app_version` comment 'APP版本控制表'");
+        DB::statement("ALTER TABLE `app_version` comment 'APP版本控制表'");
     }
 
     /**

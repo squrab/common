@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -23,7 +24,7 @@ class CreateExpressOrderAppTable extends Migration
             $table->timestamps();
         });
 
-        \DB::statement("ALTER TABLE `express_order_app` comment '专送Pro订单骑手状态记录表'");
+        DB::statement("ALTER TABLE `express_order_app` comment '专送Pro订单骑手状态记录表'");
     }
 
     /**

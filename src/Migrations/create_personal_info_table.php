@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -26,7 +27,7 @@ class CreatePersonalInfoTable extends Migration
             $table->unique('user_id');
         });
 
-        \DB::statement("ALTER TABLE `personal_info` comment '普通用户信息表'");
+        DB::statement("ALTER TABLE `personal_info` comment '普通用户信息表'");
     }
 
     /**

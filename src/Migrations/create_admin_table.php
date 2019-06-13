@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -24,9 +25,9 @@ class CreateAdminTable extends Migration
             $table->timestamps();
         });
 
-        \DB::statement("ALTER TABLE `admin` comment '后台管理用户表'");
+        DB::statement("ALTER TABLE `admin` comment '后台管理用户表'");
 
-        $id = DB::table('admin')->insertGetId([
+        DB::table('admin')->insertGetId([
             'id' => 1,
             'username' => 'admin',
             'password' => bcrypt('41177164'),

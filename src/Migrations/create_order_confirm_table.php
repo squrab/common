@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -21,7 +22,7 @@ class CreateOrderConfirmTable extends Migration
             $table->tinyInteger("type")->comment("确认类型（1是开始前确认：2是结束确认）");
         });
 
-        \DB::statement("ALTER TABLE `order_confirm` comment '订单确认图片表'");
+        DB::statement("ALTER TABLE `order_confirm` comment '订单确认图片表'");
     }
 
     /**

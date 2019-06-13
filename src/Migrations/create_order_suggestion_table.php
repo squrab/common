@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -21,7 +22,7 @@ class CreateOrderSuggestionTable extends Migration
             $table->timestamps();
         });
 
-        \DB::statement("ALTER TABLE `order_suggestion` comment '订单投诉表'");
+        DB::statement("ALTER TABLE `order_suggestion` comment '订单投诉表'");
     }
 
     /**

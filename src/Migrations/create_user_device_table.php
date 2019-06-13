@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -21,7 +22,7 @@ class CreateUserDeviceTable extends Migration
             $table->timestamps();
         });
 
-        \DB::statement("ALTER TABLE `user_device` comment '用户第三方推送识别号记录表'");
+        DB::statement("ALTER TABLE `user_device` comment '用户第三方推送识别号记录表'");
     }
 
     /**

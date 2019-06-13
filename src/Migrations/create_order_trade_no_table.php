@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -24,7 +25,7 @@ class CreateOrderTradeNoTable extends Migration
             $table->unique('trade_no');
         });
 
-        \DB::statement("ALTER TABLE `order_trade_no` comment '订单第三方支付订单号表'");
+        DB::statement("ALTER TABLE `order_trade_no` comment '订单第三方支付订单号表'");
     }
 
     /**

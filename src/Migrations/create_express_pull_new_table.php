@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -21,7 +22,7 @@ class CreateExpressPullNewTable extends Migration
             $table->timestamps();
         });
 
-        \DB::statement("ALTER TABLE `express_pull_new` comment '骑手拉新活动表'");
+        DB::statement("ALTER TABLE `express_pull_new` comment '骑手拉新活动表'");
     }
 
     /**

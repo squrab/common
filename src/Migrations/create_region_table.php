@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -23,7 +24,7 @@ class CreateRegionTable extends Migration
             $table->unsignedTinyInteger('level')->default(0)->comment('地区级别：0.国家、1.省份、2.城市、3.区县');
         });
 
-        \DB::statement("ALTER TABLE `region` comment '省市区信息三级联动表'");
+        DB::statement("ALTER TABLE `region` comment '省市区信息三级联动表'");
     }
 
     /**

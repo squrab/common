@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -19,7 +20,7 @@ class CreateCompanySubordinateTable extends Migration
             $table->integer('subordinate_id')->unsigned()->comment('子账号用户-用户表ID');
         });
 
-        \DB::statement("ALTER TABLE `company_subordinate` comment '企业用户子账号关联表'");
+        DB::statement("ALTER TABLE `company_subordinate` comment '企业用户子账号关联表'");
     }
 
     /**

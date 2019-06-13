@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -21,7 +22,7 @@ class CreateRegionOpenedTable extends Migration
             $table->primary('region_id');
         });
 
-        \DB::statement("ALTER TABLE `region_opened` comment '开放城市表'");
+        DB::statement("ALTER TABLE `region_opened` comment '开放城市表'");
     }
 
     /**

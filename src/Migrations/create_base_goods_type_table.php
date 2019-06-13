@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -22,7 +23,7 @@ class CreateBaseGoodsTypeTable extends Migration
             $table->timestamps();
         });
 
-        \DB::statement("ALTER TABLE `base_goods_type` comment '配送类型表'");
+        DB::statement("ALTER TABLE `base_goods_type` comment '配送类型表'");
 
         DB::table('base_goods_type')->insert([
             [

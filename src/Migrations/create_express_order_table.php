@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -26,7 +27,7 @@ class CreateExpressOrderTable extends Migration
             $table->unsignedDecimal('total_money', 10, 2)->comment('总价');
             $table->unsignedDecimal('driver_money', 10, 2)->default(0)->comment('骑手费用');
             $table->tinyInteger('status')->default(0)->comment('订单状态：');
-            $table->tinyInteger("type")->comment('跑腿单类型：1-帮我买 2- 帮我送 3帮我取');
+            $table->tinyInteger("type")->comment('跑腿单类型：1.帮买、 2帮送、 3帮取、');
             $table->string("description")->default("")->comment('描述');
             $table->string("remark")->default("")->comment('备注/其他需求');
             $table->unsignedInteger('weight')->comment("单位公斤");
@@ -39,7 +40,7 @@ class CreateExpressOrderTable extends Migration
             $table->timestamps();
         });
 
-        \DB::statement("ALTER TABLE `express_order` comment '专送Pro订单副表'");
+        DB::statement("ALTER TABLE `express_order` comment '专送Pro订单副表'");
     }
 
     /**

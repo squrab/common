@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -22,7 +23,7 @@ class CreateFailedJobsTable extends Migration
             $table->timestamp('failed_at')->useCurrent();
         });
 
-        \DB::statement("ALTER TABLE `failed_jobs` comment 'laravel队列表'");
+        DB::statement("ALTER TABLE `failed_jobs` comment 'laravel队列表'");
     }
 
     /**

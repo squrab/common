@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -23,7 +24,7 @@ class CreateSelfServiceTable extends Migration
             $table->timestamps();
         });
 
-        \DB::statement("ALTER TABLE `self_service` comment '自助服务类容表'");
+        DB::statement("ALTER TABLE `self_service` comment '自助服务类容表'");
     }
 
     /**

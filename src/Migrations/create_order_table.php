@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -39,7 +40,7 @@ class CreateOrderTable extends Migration
             $table->unique('order_sn');
         });
 
-        \DB::statement("ALTER TABLE `order` comment '订单主表'");
+        DB::statement("ALTER TABLE `order` comment '订单主表'");
     }
 
     /**

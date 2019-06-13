@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -25,7 +26,7 @@ class CreateActivityLogTable extends Migration
             $table->index('log_name');
         });
 
-        \DB::statement("ALTER TABLE `" . config('activitylog.table_name') . "` comment '用户活动日志表'");
+        DB::statement("ALTER TABLE `" . config('activitylog.table_name') . "` comment '用户活动日志表'");
     }
 
     /**

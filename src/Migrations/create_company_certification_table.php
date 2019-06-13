@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -23,7 +24,7 @@ class CreateCompanyCertificationTable extends Migration
             $table->unique('user_id');
         });
 
-        \DB::statement("ALTER TABLE `company_certification` comment '企业认证资料表'");
+        DB::statement("ALTER TABLE `company_certification` comment '企业认证资料表'");
     }
 
     /**

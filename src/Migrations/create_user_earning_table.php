@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -23,7 +24,7 @@ class CreateUserEarningTable extends Migration
             $table->timestamp('collected_at')->nullable()->comment('到账时间');
         });
 
-        \DB::statement("ALTER TABLE `user_earning` comment '司机/骑手收益表'");
+        DB::statement("ALTER TABLE `user_earning` comment '司机/骑手收益表'");
     }
 
     /**

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserWithdrawTable extends Migration
+class CreateCouponConstraintUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,15 +14,14 @@ class CreateUserWithdrawTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_withdraw', function (Blueprint $table) {
+        Schema::create('coupon_constraint_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger("user_id");
-            $table->string("account")->comment("提现账号");
-            $table->unsignedTinyInteger("type")->comment("账号类型:1.支付宝、2.银行卡");
+            $table->string('title', 20)->comment('可读名称');
+            $table->text('sql')->comment('用户群原始SQL语句');
             $table->timestamps();
         });
 
-        DB::statement("ALTER TABLE `user_withdraw` comment '用户提现账号表'");
+        DB::statement("ALTER TABLE `coupon_constraint_users` comment '优惠劵可用用户群'");
     }
 
     /**
@@ -32,6 +31,6 @@ class CreateUserWithdrawTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_withdraw');
+        Schema::dropIfExists('coupon_constraint_users');
     }
 }
