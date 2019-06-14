@@ -13,7 +13,7 @@ use Predis\Client;
 
 class Redis
 {
-    public static function connection()
+    public function __construct()
     {
         return new Client(config('squrab.redis'));
     }

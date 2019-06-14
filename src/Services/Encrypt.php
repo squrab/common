@@ -11,7 +11,6 @@ namespace SquRab\Common\Services;
 
 use SquRab\Common\Traits\Response;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Str;
 
 class Encrypt
@@ -27,7 +26,7 @@ class Encrypt
 
     public function __construct()
     {
-        $redis = Redis::connection('common');
+        $redis = new Redis();
 
         if ($redis->exists($this->keyCacheName) === 0) {
             $key = Str::random();
@@ -38,7 +37,6 @@ class Encrypt
                 Log::error("存储{$this->keyCacheName}失败", [
                     'key' => $key
                 ]);
-                return $this->fail(UNKNOWN_ERROR_CODE, '存储KEY失败');
             }
         } else {
             $this->key = $redis->get($this->keyCacheName);
