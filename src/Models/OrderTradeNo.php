@@ -6,7 +6,7 @@
  * Time: 17:06
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class OrderTradeNo extends BaseModel
 {

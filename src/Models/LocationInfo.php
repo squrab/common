@@ -6,7 +6,7 @@
  * Time: 19:59
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class LocationInfo extends BaseModel
 {

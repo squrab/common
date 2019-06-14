@@ -6,9 +6,9 @@
  * Time: 15:07
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
-use SquRab\Services\QiNiu;
+use SquRab\Common\Services\QiNiu;
 use Exception;
 
 class Image extends BaseModel

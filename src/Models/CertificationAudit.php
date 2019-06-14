@@ -6,7 +6,7 @@
  * Time: 15:05
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class CertificationAudit extends BaseModel
 {

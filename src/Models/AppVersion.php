@@ -6,7 +6,7 @@
  * Time: 20:12
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class AppVersion extends BaseModel
 {

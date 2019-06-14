@@ -6,7 +6,7 @@
  * Time: 15:27
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class ExpressOrder extends BaseModel
 {

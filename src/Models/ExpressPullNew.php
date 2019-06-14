@@ -6,7 +6,7 @@
  * Time: 16:42
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class ExpressPullNew extends BaseModel
 {

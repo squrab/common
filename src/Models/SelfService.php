@@ -6,7 +6,7 @@
  * Time: 14:04
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 
 use Illuminate\Database\Eloquent\SoftDeletes;

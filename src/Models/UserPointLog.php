@@ -6,7 +6,7 @@
  * Time: 19:36
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class UserPointLog extends BaseModel
 {

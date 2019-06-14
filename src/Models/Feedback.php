@@ -6,7 +6,7 @@
  * Time: 20:13
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class Feedback extends BaseModel
 {

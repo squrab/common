@@ -6,7 +6,7 @@
  * Time: 19:28
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class OrderInvoice extends BaseModel
 {

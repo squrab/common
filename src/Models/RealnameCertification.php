@@ -6,7 +6,7 @@
  * Time: 20:23
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class RealnameCertification extends BaseModel
 {

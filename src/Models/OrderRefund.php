@@ -6,7 +6,7 @@
  * Time: 14:42
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class OrderRefund extends BaseModel
 {

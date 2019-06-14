@@ -6,7 +6,7 @@
  * Time: 14:02
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class OrderWithdraw extends BaseModel
 {

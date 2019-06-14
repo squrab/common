@@ -6,7 +6,7 @@
  * Time: 15:59
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class Region extends BaseModel
 {

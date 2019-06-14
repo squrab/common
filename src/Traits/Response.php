@@ -6,7 +6,7 @@
  * Time: 11:01
  */
 
-namespace SquRab\Traits;
+namespace SquRab\Common\Traits;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;

@@ -6,7 +6,7 @@
  * Time: 9:53
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class BaseGoodsType extends BaseModel
 {

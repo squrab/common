@@ -6,7 +6,7 @@
  * Time: 16:26
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class OrderCode extends BaseModel
 {

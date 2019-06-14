@@ -6,7 +6,7 @@
  * Time: 9:45
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class DriverInfo extends BaseModel
 {

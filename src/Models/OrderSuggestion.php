@@ -6,7 +6,7 @@
  * Time: 19:30
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class OrderSuggestion extends BaseModel
 {

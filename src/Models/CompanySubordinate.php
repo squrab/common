@@ -6,7 +6,7 @@
  * Time: 19:43
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class CompanySubordinate extends BaseModel
 {

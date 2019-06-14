@@ -7,7 +7,7 @@
  * Time: 13:14
  */
 
-namespace App\Services;
+namespace SquRab\Common\Services;
 
 class Encrypt
 {

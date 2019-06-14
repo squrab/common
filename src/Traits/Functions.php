@@ -7,10 +7,10 @@
  * Use: 公共功能函数
  */
 
-namespace SquRab\Traits;
+namespace SquRab\Common\Traits;
 
-use SquRab\Models\User;
-use SquRab\Models\Coupon;
+use SquRab\Common\Models\User;
+use SquRab\Common\Models\Coupon;
 use GuzzleHttp\Client as HttpClient;
 use Illuminate\Support\Facades\Cache;
 

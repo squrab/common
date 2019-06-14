@@ -6,7 +6,7 @@
  * Time: 11:41
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class PersonalInfo extends BaseModel
 {

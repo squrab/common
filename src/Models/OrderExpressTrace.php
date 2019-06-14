@@ -6,7 +6,7 @@
  * Time: 16:10
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class OrderExpressTrace extends BaseModel
 {

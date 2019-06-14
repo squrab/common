@@ -6,7 +6,7 @@
  * Time: 16:12
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class OrderConfirm extends BaseModel
 {

@@ -6,7 +6,7 @@
  * Time: 15:51
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class DriverDeposit extends BaseModel
 {

@@ -6,7 +6,7 @@
  * Time: 9:53
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;

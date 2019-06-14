@@ -6,7 +6,7 @@
  * Time: 19:33
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class UserDevice extends BaseModel
 {

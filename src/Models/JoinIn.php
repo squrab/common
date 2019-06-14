@@ -6,7 +6,7 @@
  * Time: 17:10
  */
 
-namespace SquRab\Models;
+namespace SquRab\Common\Models;
 
 class JoinIn extends BaseModel
 {
