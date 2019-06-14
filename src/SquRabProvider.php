@@ -21,9 +21,4 @@ class SquRabProvider extends ServiceProvider
             __DIR__ . '/config.php' => config_path('squrab.php'),
         ]);
     }
-
-    public function register()
-    {
-        $this->app->register('SquRab\Common\SquRabProvider');
-    }
 }
