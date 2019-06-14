@@ -24,5 +24,12 @@
     "psr-4": {
       "SquRab\\Common\\": "src"
     }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "SquRab\\Common\\SquRabProvider"
+      ]
+    }
   }
 }
