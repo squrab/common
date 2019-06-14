@@ -13,8 +13,15 @@ use Predis\Client;
 
 class Redis
 {
+    private static $redis;
+
     public function __construct()
     {
-        return new Client(config('squrab.redis'));
+        self::$redis = new Client(config('squrab.redis'));
+    }
+
+    public static function connection()
+    {
+        return self::$redis;
     }
 }

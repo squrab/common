@@ -9,49 +9,47 @@
 
 namespace SquRab\Common\Services;
 
-use SquRab\Common\Traits\Response;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class Encrypt
 {
-    use Response;
-
-    private $key;
-    private $keyCacheName = 'http_encrypt_key';
-    private $keyTTL = 60 * 60 * 2;
-    private $localIV = 'F6$elFe5QK$!902c';
-    private $encryptKey = 'K%Xn3%@3XWs1f$!uR4TxXaiVpbNUhN^K';
-    private $method = 'AES-128-CBC';
+    private $secret;
+    private $secretCacheName = 'http_encrypt_secret';
+    private $config;
 
     public function __construct()
     {
-        $redis = new Redis();
+        $redis = (new Redis())::connection();
 
-        if ($redis->exists($this->keyCacheName) === 0) {
-            $key = Str::random();
-            $res = $redis->setex($this->keyCacheName, 60 * 60 * 2, $key);
+        $this->config = config('squrab.encrypt');
+
+        if ($redis->exists($this->secretCacheName) === 0) {
+            $secret = Str::random();
+            $res = $redis->setex($this->secretCacheName, $this->config['ttl'], $secret);
             if ($res)
-                $this->key = $key;
+                $this->secret = $secret;
             else {
-                Log::error("存储{$this->keyCacheName}失败", [
-                    'key' => $key
+                Log::error("存储{$this->secretCacheName}失败", [
+                    'secret' => $secret
                 ]);
             }
         } else {
-            $this->key = $redis->get($this->keyCacheName);
+            $this->secret = $redis->get($this->secretCacheName);
         }
+
     }
 
     //加密
-    function authEncrypt()
+    public function authEncrypt()
     {
-        return openssl_encrypt($this->key, $this->method, $this->encryptKey, 0, $this->localIV);
+        return openssl_encrypt($this->secret, $this->config['method'], $this->config['key'], 0, $this->config['iv']);
     }
 
-    //解密
-    function authDecrypt($str)
+    function check(string $token)
     {
-        return openssl_decrypt($str, $this->method, $this->encryptKey, 0, $this->localIV);
+        $secret = openssl_decrypt($token, $this->config['method'], $this->config['key'], 0, $this->config['iv']);
+
+        return $secret === $this->secret;
     }
 }

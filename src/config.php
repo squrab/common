@@ -14,5 +14,11 @@ return [
         'port' => env('REDIS_PORT', 6379),
         'database' => env('REDIS_COMMON_DB', 10),
         'persistent' => true
+    ],
+    'encrypt' => [
+        'ttl' => env('ENCRYPT_TTL', 7200),
+        'iv' => env('ENCRYPT_IV', 'F6$elFe5QK$!902c'),
+        'method' => env('ENCRYPT_METHOD', 'AES-128-CBC'),
+        'key' => env('ENCRYPT_KEY', 'K%Xn3%@3XWs1f$!uR4TxXaiVpbNUhN^K')
     ]
 ];
