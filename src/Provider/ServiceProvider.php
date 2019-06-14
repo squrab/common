@@ -9,9 +9,9 @@
 
 namespace SquRab\Common\Provider;
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
-class Service extends ServiceProvider
+class ServiceProvider extends BaseServiceProvider
 {
     public function boot()
     {
@@ -22,6 +22,6 @@ class Service extends ServiceProvider
 
     public function register()
     {
-        $this->app->register('SquRab\Common\Provider\Service');
+        $this->app->register('SquRab\Common\Provider\ServiceProvider');
     }
 }
