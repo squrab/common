@@ -22,7 +22,7 @@
   },
   "autoload": {
     "psr-4": {
-      "SquRab\\": "src"
+      "SquRab\\Common\\": "src"
     }
   }
 }
