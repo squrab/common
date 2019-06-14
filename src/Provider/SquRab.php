@@ -13,15 +13,17 @@ use Illuminate\Support\ServiceProvider;
 
 class SquRab extends ServiceProvider
 {
-    /**
-     * Bootstrap the application services.
-     *
-     * @return void
-     */
     public function boot()
     {
         $this->publishes([
             __DIR__ . '/../squrab.php' => config_path('squrab.php'),
         ]);
+    }
+
+    public function register()
+    {
+        $this->app->singleton('avatar', function ($app) {
+
+        });
     }
 }
