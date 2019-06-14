@@ -13,6 +13,8 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
 {
+    protected $defer = false;
+
     public function boot()
     {
         $this->publishes([
