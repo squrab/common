@@ -11,7 +11,7 @@ namespace SquRab\Common\Provider;
 
 use Illuminate\Support\ServiceProvider;
 
-class SquRab extends ServiceProvider
+class Service extends ServiceProvider
 {
     public function boot()
     {
@@ -22,8 +22,6 @@ class SquRab extends ServiceProvider
 
     public function register()
     {
-        $this->app->singleton('avatar', function ($app) {
-
-        });
+        $this->app->register('SquRab\Common\Provider\Service');
     }
 }
