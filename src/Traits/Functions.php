@@ -12,10 +12,18 @@ namespace SquRab\Common\Traits;
 use SquRab\Common\Models\User;
 use SquRab\Common\Models\Coupon;
 use GuzzleHttp\Client as HttpClient;
-use Illuminate\Support\Facades\Cache;
+//use Illuminate\Support\Facades\Cache;
+use SquRab\Common\Services\Redis;
 
 trait Functions
 {
+    private static $redis;
+
+    public function __construct()
+    {
+        self::$redis = (new Redis())::connection();
+    }
+
     public function dateAt($timestamp)
     {
         if (is_integer($timestamp) || strtotime($timestamp))
@@ -173,7 +181,7 @@ trait Functions
             if ($arr) {
                 rsort($arr);
                 $max = current($arr);
-                $ext = $max + mt_rand(1, 99);
+                $ext = $max + 1;
                 if ($user_type === 1)
                     if (strlen($ext) < 6)
                         $ext = '0' . $ext;
@@ -197,13 +205,15 @@ trait Functions
         $M = date('m');
         $D = date('d');
         $key = 'pay_' . $M . $D;
-        if (($cache = Cache::pull($key)) && is_array($cache)) {
-            $payNumber = array_pop($cache);
-            Cache::put($key, $cache, now()->tomorrow('PRC'));
+        if (self::$redis->exists($key) === 0) {
+            $array = json_decode(self::$redis->get($key), true);
+            $payNumber = array_pop($array);
+            self::$redis->set($key, json_encode($array));
         } else {
-            $cache = $this->uniqueRand(1000, 9999, 2000);
-            $payNumber = array_pop($cache);
-            Cache::add($key, $cache, now()->tomorrow('PRC'));
+            $array = $this->uniqueRand(1000, 9999, 5000);
+            $payNumber = array_pop($array);
+            self::$redis->setex($key, $this->diffBetweenTwoDays(now()->toDateTimeString(),
+                now()->tomorrow('PRC')->toDateTimeString()), json_encode($array));
         }
         $start = now()->createFromTimeString('2018-12-01 00:00:00');
         $diff = $start->diffInMonths();
@@ -216,12 +226,13 @@ trait Functions
         $D = date('d');
         $key = 'order_' . $M . $D;
         $rand = [];
-        if (($cache = Cache::pull($key)) && is_array($cache)) {
+        if (self::$redis->exists($key) === 0) {
+            $array = json_decode(self::$redis->get($key), true);
             for ($i = 0; $i < $num; $i++)
-                $rand[$i] = array_pop($cache);
-            Cache::put($key, $cache, now()->tomorrow('PRC'));
+                $rand[$i] = array_pop($array);
+            self::$redis->set($key, json_encode($array));
         } else {
-            $cache = [];
+            $array = [];
             for ($i = 1000; $i < 100000; $i++) {
                 switch ($i) {
                     case $i < 10000:
@@ -233,12 +244,13 @@ trait Functions
                     default:
                         $j = (string)$i;
                 }
-                array_push($cache, $j);
+                array_push($array, $j);
             }
-            shuffle($cache);
+            shuffle($array);
             for ($i = 0; $i < $num; $i++)
-                $rand[$i] = array_pop($cache);
-            Cache::add($key, $cache, now()->tomorrow('PRC'));
+                $rand[$i] = array_pop($array);
+            self::$redis->setex($key, $this->diffBetweenTwoDays(now()->toDateTimeString(),
+                now()->tomorrow('PRC')->toDateTimeString()), json_encode($array));
         }
         $arr = [];
         $start = now()->createFromTimeString('2018-12-01 00:00:00');

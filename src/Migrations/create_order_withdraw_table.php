@@ -23,6 +23,7 @@ class CreateOrderWithdrawTable extends Migration
             $table->unsignedInteger('user_id')->comment('提现申请人');
             $table->tinyInteger('status')->default(1)->comment('提现状态 1 提现中 2 提现完成 3 提现失败');
             $table->tinyInteger('type')->comment('提现类型:1.支付宝、2.银行卡、3.微信');
+            $table->unsignedInteger('flag')->default(1)->comment('种类: 1.提现,2绑卡');
             $table->decimal('apply_money')->comment('申请提现金额');
             $table->decimal('real_money')->default(0)->comment('实际提现金额');
             $table->decimal('charge')->default(0)->comment('提现手续费');
