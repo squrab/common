@@ -205,32 +205,31 @@ trait Functions
         $M = date('m');
         $D = date('d');
         $key = 'pay_' . $M . $D;
-        if (self::$redis->exists($key) === 0) {
+        if (self::$redis->exists($key) === 1) {
             $array = json_decode(self::$redis->get($key), true);
             $payNumber = array_pop($array);
-            self::$redis->set($key, json_encode($array));
+            self::$redis->setex($key, now('PRC')->diffInSeconds(now()->tomorrow('PRC')), json_encode($array));
         } else {
             $array = $this->uniqueRand(1000, 9999, 5000);
             $payNumber = array_pop($array);
-            self::$redis->setex($key, $this->diffBetweenTwoDays(now()->toDateTimeString(),
-                now()->tomorrow('PRC')->toDateTimeString()), json_encode($array));
+            self::$redis->setex($key, now('PRC')->diffInSeconds(now()->tomorrow('PRC')), json_encode($array));
         }
         $start = now()->createFromTimeString('2018-12-01 00:00:00');
         $diff = $start->diffInMonths();
         return (int)(10 + $diff . date('d') . $payNumber);
     }
 
-    public function generateOrderNumber(int $num)
+    public function creatOrderNumber(int $num)
     {
         $M = date('m');
         $D = date('d');
         $key = 'order_' . $M . $D;
         $rand = [];
-        if (self::$redis->exists($key) === 0) {
+        if (self::$redis->exists($key) === 1) {
             $array = json_decode(self::$redis->get($key), true);
             for ($i = 0; $i < $num; $i++)
                 $rand[$i] = array_pop($array);
-            self::$redis->set($key, json_encode($array));
+            self::$redis->setex($key, now('PRC')->diffInSeconds(now()->tomorrow('PRC')), json_encode($array));
         } else {
             $array = [];
             for ($i = 1000; $i < 100000; $i++) {
@@ -249,8 +248,7 @@ trait Functions
             shuffle($array);
             for ($i = 0; $i < $num; $i++)
                 $rand[$i] = array_pop($array);
-            self::$redis->setex($key, $this->diffBetweenTwoDays(now()->toDateTimeString(),
-                now()->tomorrow('PRC')->toDateTimeString()), json_encode($array));
+            self::$redis->setex($key, now('PRC')->diffInSeconds(now()->tomorrow('PRC')), json_encode($array));
         }
         $arr = [];
         $start = now()->createFromTimeString('2018-12-01 00:00:00');
