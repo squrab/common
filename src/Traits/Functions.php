@@ -16,13 +16,6 @@ use SquRab\Common\Services\Redis;
 
 trait Functions
 {
-    private static $redis;
-
-    public function __construct()
-    {
-        self::$redis = (new Redis())::connection();
-    }
-
     public function dateAt($timestamp)
     {
         if (is_integer($timestamp) || strtotime($timestamp))
@@ -204,14 +197,15 @@ trait Functions
         $M = date('m');
         $D = date('d');
         $key = 'pay_' . $M . $D;
-        if (self::$redis->exists($key) === 1) {
-            $array = json_decode(self::$redis->get($key), true);
+        $redis = (new Redis())::connection();
+        if ($redis->exists($key) === 1) {
+            $array = json_decode($redis->get($key), true);
             $payNumber = array_pop($array);
-            self::$redis->setex($key, now('PRC')->diffInSeconds(now()->tomorrow('PRC')), json_encode($array));
+            $redis->setex($key, now('PRC')->diffInSeconds(now()->tomorrow('PRC')), json_encode($array));
         } else {
             $array = $this->uniqueRand(1000, 9999, 5000);
             $payNumber = array_pop($array);
-            self::$redis->setex($key, now('PRC')->diffInSeconds(now()->tomorrow('PRC')), json_encode($array));
+            $redis->setex($key, now('PRC')->diffInSeconds(now()->tomorrow('PRC')), json_encode($array));
         }
         $start = now()->createFromTimeString('2018-12-01 00:00:00');
         $diff = $start->diffInMonths();
@@ -224,11 +218,12 @@ trait Functions
         $D = date('d');
         $key = 'order_' . $M . $D;
         $rand = [];
-        if (self::$redis->exists($key) === 1) {
-            $array = json_decode(self::$redis->get($key), true);
+        $redis = (new Redis())::connection();
+        if ($redis->exists($key) === 1) {
+            $array = json_decode($redis->get($key), true);
             for ($i = 0; $i < $num; $i++)
                 $rand[$i] = array_pop($array);
-            self::$redis->setex($key, now('PRC')->diffInSeconds(now()->tomorrow('PRC')), json_encode($array));
+            $redis->setex($key, now('PRC')->diffInSeconds(now()->tomorrow('PRC')), json_encode($array));
         } else {
             $array = [];
             for ($i = 1000; $i < 100000; $i++) {
@@ -247,7 +242,7 @@ trait Functions
             shuffle($array);
             for ($i = 0; $i < $num; $i++)
                 $rand[$i] = array_pop($array);
-            self::$redis->setex($key, now('PRC')->diffInSeconds(now()->tomorrow('PRC')), json_encode($array));
+            $redis->setex($key, now('PRC')->diffInSeconds(now()->tomorrow('PRC')), json_encode($array));
         }
         $arr = [];
         $start = now()->createFromTimeString('2018-12-01 00:00:00');

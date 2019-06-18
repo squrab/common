@@ -40,7 +40,6 @@ class Encrypt
 
     }
 
-    //加密
     public function authEncrypt()
     {
         return openssl_encrypt($this->secret, $this->config['method'], $this->config['key'], 0, $this->config['iv']);
