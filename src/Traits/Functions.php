@@ -12,7 +12,6 @@ namespace SquRab\Common\Traits;
 use SquRab\Common\Models\User;
 use SquRab\Common\Models\Coupon;
 use GuzzleHttp\Client as HttpClient;
-//use Illuminate\Support\Facades\Cache;
 use SquRab\Common\Services\Redis;
 
 trait Functions
