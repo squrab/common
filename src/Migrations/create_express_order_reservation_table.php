@@ -16,10 +16,12 @@ class CreateExpressOrderReservationTable extends Migration
     {
         Schema::create('express_order_reservation', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedTinyInteger('express_order_id')->comment('专送订单id');
+            $table->unsignedTinyInteger('order_id')->comment('订单主表id');
             $table->string('label', 50)->default('')->comment('预约时间可读名称');
             $table->timestamp('reservation_at')->comment('预约时间');
-            $table->timestamp('push_at')->comment('推送时间');
             $table->unsignedTinyInteger('push_status')->default(0)->comment('是否已推送');
+            $table->timestamp('push_at')->nullable()->comment('推送时间');
             $table->text('push_user')->nullable()->comment('已推送专送员id');
         });
 

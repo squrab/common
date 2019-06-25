@@ -27,7 +27,7 @@ class CreateExpressOrderTable extends Migration
             $table->unsignedDecimal('total_money', 10, 2)->comment('总价');
             $table->unsignedDecimal('driver_money', 10, 2)->default(0)->comment('骑手费用');
             $table->tinyInteger('status')->default(0)->comment('订单状态：');
-            $table->unsignedtinyInteger("type")->comment('跑腿单类型：1.帮买、 2帮送、 3帮取、');
+            $table->unsignedtinyInteger("type")->comment('跑腿单类型：1.帮送、 2帮买、 3帮取、');
             $table->unsignedtinyInteger("kind")->default(1)->comment('订单类型：1.实时单、2.预约单、');
             $table->string("description")->default("")->comment('描述');
             $table->string("remark")->default("")->comment('备注/其他需求');
