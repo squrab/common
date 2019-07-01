@@ -19,7 +19,7 @@ class CreateDriverInfoTable extends Migration
             $table->unsignedInteger('user_id')->comment('用户标识');
             $table->unsignedInteger('region_id')->comment('运营城市，关联地区表');
             $table->unsignedTinyInteger('evaluation_score')->default(100)->comment('信用分');
-            $table->unsignedTinyInteger('type')->default(100)->comment('1 司机 2 跑腿');
+            $table->unsignedTinyInteger('type')->default(100)->comment('1.专职、 2. 兼职');
             $table->unsignedInteger('comment_num')->default(0)->comment('评分人数');
             $table->string('vehicle_number', 10)->default('')->comment('车牌号码');
             $table->timestamp('fist_drive_at')->nullable()->comment('初次开车时间');

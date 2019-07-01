@@ -18,6 +18,7 @@ class CreatePromotionCouponTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('coupon_id')->comment('优惠劵id');
             $table->unsignedInteger('promotion_id')->comment('优惠活动id');
+            $table->unsignedInteger('put_num')->comment('投放量');
             $table->timestamps();
 
             $table->unique(

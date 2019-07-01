@@ -21,8 +21,7 @@ class CreatePromotionTable extends Migration
             $table->date('end_date')->comment('结束日期');
             $table->unsignedInteger('banner_id')->comment('图片表id,配图');
             $table->unsignedInteger('admin_id')->comment('创建人');
-            $table->unsignedInteger('put_num')->comment('投放量');
-            $table->unsignedTinyInteger('status')->default(1)->comment('是否上线,双重限制,优先考虑此字段.上线状态下在根据时间判断');
+            $table->tinyInteger('status')->default(1)->comment('是否上线,双重限制,优先考虑此字段.上线状态下在根据时间判断');
             $table->string('info')->default('')->comment('活动规则');
             $table->timestamps();
         });

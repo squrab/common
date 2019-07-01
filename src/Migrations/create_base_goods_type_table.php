@@ -19,7 +19,7 @@ class CreateBaseGoodsTypeTable extends Migration
             $table->string('text')->comment('类型名称');
             $table->integer('sort')->default(100)->comment('排序');
             $table->unsignedInteger('parent_id')->default(0)->comment('父id,顶级为0');
-            $table->tinyInteger('type')->default(0)->comment('1.货运、2.专送');
+            $table->tinyInteger('type')->default(0)->comment('2.专送、');
             $table->timestamps();
         });
 
