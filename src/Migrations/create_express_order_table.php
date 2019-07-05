@@ -33,10 +33,11 @@ class CreateExpressOrderTable extends Migration
             $table->string("remark")->default("")->comment('备注/其他需求');
             $table->unsignedTinyInteger('need_code')->default(1)->comment('是否需要取收件码');
             $table->unsignedInteger('weight')->comment("单位公斤");
-            $table->unsignedDecimal('bridge_fee')->default(8)->comment("过桥费：8元");
-            $table->unsignedDecimal('tip')->default(0)->comment("小费：0元");
-            $table->unsignedDecimal('insurance_fee')->default(0)->comment("货损险/保险费：0元");
-            $table->unsignedDecimal('night_fee')->default(5)->comment("22点至次日7点的专送单，需额外支付夜间费5元");
+            $table->unsignedDecimal('bridge_fee')->default(0)->comment("过桥费");
+            $table->unsignedDecimal('tip')->default(0)->comment("小费");
+            $table->unsignedDecimal('insurance_fee')->default(0)->comment("货损险/保险费");
+            $table->unsignedDecimal('night_fee')->default(0)->comment("夜间溢价");
+            $table->unsignedDecimal('estimate_fee')->default(0)->comment("帮买预估价格");
             $table->string("goods_type")->default("")->comment("货物类型");
             $table->timestamp('complete_at')->nullable()->comment('完成时间');
             $table->timestamps();
