@@ -257,11 +257,12 @@ trait Functions
         $num = date('Ymd');
         $max = Coupon::query()->where('coupon_sn', 'like', "$num%")->max('coupon_sn');
         if ($max) {
-            $round = substr($max, 8, 2);
-            if ($round > 9)
-                $res = $num . ((int)$round + 1);
-            else
+            $round = str_replace($num, '', $max);
+            if ($round < 9)
                 $res = $num . '0' . ((int)$round + 1);
+            else
+                $res = $num . ((int)$round + 1);
+
         } else
             $res = $num . '01';
         return $res;
