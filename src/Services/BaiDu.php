@@ -60,7 +60,7 @@ class BaiDu
             'form_params' => [
                 'detect_risk' => 'true',
                 'id_card_side' => 'front',
-                'image' => urlencode(base64_encode(file_get_contents($filepath))),
+                'image' => base64_encode(file_get_contents($filepath)),
             ]
         ]);
 
