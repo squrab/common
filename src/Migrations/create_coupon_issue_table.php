@@ -20,7 +20,7 @@ class CreateCouponIssueTable extends Migration
             $table->unsignedTinyInteger('type')->comment('发放对象：1.活动、2.个人');
             $table->integer('issue_num')->comment('发放数量');
             $table->unsignedInteger('target_id')->comment('目标id,活动id或用户id');
-            $table->unsignedInteger('admin_id')->comment('发放人');
+            $table->unsignedInteger('admin_id')->nullable()->comment('发放人');
             $table->timestamps();
         });
 

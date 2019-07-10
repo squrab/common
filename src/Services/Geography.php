@@ -7,7 +7,7 @@
  * Time: 14:54
  */
 
-namespace App\Services;
+namespace SquRab\Common\Services;
 
 class Geography
 {
