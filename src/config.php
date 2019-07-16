@@ -24,5 +24,8 @@ return [
     'baidu' => [
         'key' => env('BAIDU_KEY', null),
         'secret' => env('BAIDU_SECRET', null)
+    ],
+    'amap' => [
+        'key' => env('AMAP_KEY', null)
     ]
 ];

@@ -37,7 +37,6 @@ class CreateExpressOrderTable extends Migration
             $table->unsignedDecimal('tip')->default(0)->comment("小费");
             $table->unsignedDecimal('insurance_fee')->default(0)->comment("货损险/保险费");
             $table->unsignedDecimal('night_fee')->default(0)->comment("夜间溢价");
-            $table->unsignedDecimal('estimate_fee')->default(0)->comment("帮买预估价格");
             $table->string("goods_type")->default("")->comment("货物类型");
             $table->timestamp('complete_at')->nullable()->comment('完成时间');
             $table->timestamps();

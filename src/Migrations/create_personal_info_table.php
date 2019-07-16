@@ -21,7 +21,7 @@ class CreatePersonalInfoTable extends Migration
             $table->unsignedInteger('image_id')->nullable()->comment('头像，关联图标表');
             $table->unsignedTinyInteger('sex')->default(0)->comment('性别：0.未知、1.男、2.女');
             $table->string('sign', 40)->default('')->comment('个性签名');
-            $table->timestamp('birthday')->nullable()->comment('出生日期');
+            $table->string('birthday', 50)->nullable()->comment('出生日期');
             $table->timestamps();
 
             $table->unique('user_id');
