@@ -93,7 +93,8 @@ class Valuation
 
                         if (in_array($start_district . $end_district, $res))
                             return $this->config['river_fee'];
-
+                        else
+                            return 0;
                 }
             }
             throw new ErrorException('该城市未开通');
