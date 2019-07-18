@@ -17,9 +17,8 @@ class CreateCouponIssueTable extends Migration
         Schema::create('coupon_issue', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('coupon_id')->comment('优惠劵id');
-            $table->unsignedTinyInteger('type')->comment('发放对象：1.活动、2.个人');
             $table->integer('issue_num')->comment('发放数量');
-            $table->unsignedInteger('target_id')->comment('目标id,活动id或用户id');
+            $table->unsignedInteger('user_id')->comment('用户id');
             $table->unsignedInteger('admin_id')->nullable()->comment('发放人');
             $table->timestamps();
         });
