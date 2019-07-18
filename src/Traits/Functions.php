@@ -9,6 +9,7 @@
 
 namespace SquRab\Common\Traits;
 
+use Illuminate\Support\Str;
 use SquRab\Common\Models\User;
 use SquRab\Common\Models\Coupon;
 use GuzzleHttp\Client as HttpClient;
@@ -266,5 +267,10 @@ trait Functions
         } else
             $res = $num . '01';
         return $res;
+    }
+
+    public function creatPromotionSn()
+    {
+        return strtoupper(Str::orderedUuid()->toString());
     }
 }
