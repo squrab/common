@@ -22,6 +22,7 @@ class CreatePromotionTable extends Migration
             $table->unsignedInteger('admin_id')->comment('创建人');
             $table->string('info')->default('')->comment('活动规则');
             $table->text('usable_sql')->comment('可使用人群SQL,来源于promotion_users表');
+            $table->unsignedInteger('usable_users_id')->comment('用户SQL来源id,promotion_users表的id');
             $table->timestamp('start_at')->comment('开始时间');
             $table->timestamp('end_at')->comment('结束时间');
             $table->unsignedTinyInteger('method')->default(1)->comment('领取方式:1.被动领取、2.主动领取');

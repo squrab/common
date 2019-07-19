@@ -9,7 +9,9 @@
 
 namespace SquRab\Common\Traits;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use SquRab\Common\Models\DriverRealTimeLocation;
 use SquRab\Common\Models\User;
 use SquRab\Common\Models\Coupon;
 use GuzzleHttp\Client as HttpClient;
@@ -272,5 +274,20 @@ trait Functions
     public function creatPromotionSn()
     {
         return strtoupper(Str::orderedUuid()->toString());
+    }
+
+    public function getDriverLocation(int $user_id)
+    {
+        $redis = (new Redis())::connection();
+        $key = 'location_uid:' . $user_id;
+        if ($redis->exists($key) === 0) {
+            $res = DriverRealTimeLocation::query()
+                ->where('user_id', $user_id)
+                ->first(['lat', 'lng', 'created_at']);
+            $res->time = $res->created_at->timestamp;
+            return $res->toArray();
+        } else {
+            return json_decode($redis->get($key), true);
+        }
     }
 }
