@@ -18,7 +18,7 @@ class CreateUserCouponTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id')->comment('用户编号');
             $table->unsignedInteger('coupon_id')->comment('优惠券编号');
-            $table->unsignedInteger('promotion_id')->nullable()->comment('活动id,无指定活动为null');
+            $table->unsignedInteger('promotion_id')->comment('活动id');
             $table->unsignedInteger('order_id')->nullable()->comment('订单编号');
             $table->timestamp('use_at')->nullable()->comment('使用时间');
             $table->timestamp('expired_at')->nullable()->comment('过期时间');

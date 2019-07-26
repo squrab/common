@@ -10,7 +10,7 @@
 namespace SquRab\Common\Models;
 
 /**
- * App\Models\DriverRealTimeLocation
+ * SquRab\Common\Models\DriverRealTimeLocation
  *
  * @property int $id
  * @property int $user_id 骑手id

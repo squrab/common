@@ -17,8 +17,14 @@ class CreateUserBalanceLogTable extends Migration
         Schema::create('user_balance_log', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id')->comment('用户标识');
-            $table->unsignedTinyInteger('target_type')->default(1)
-                ->comment('记录来源:1.订单（包括充值和消费）、2.骑手培训奖励、3.骑手跑单奖励、4.退款、');
+            $table->unsignedTinyInteger('target_type')->default(1)->comment('记录来源:
+            1.订单（包括充值+和消费-）、
+            2.专送员培训奖励、
+            3.专送员跑单奖励、
+            4.退款、
+            5.兼职骑手单活动记录、
+            6.充值赠送、
+            7.专送员活跃活动奖励、');
             $table->unsignedBigInteger('target_id')->comment('相关单据编号');
             $table->decimal('amount', 10, 2)->comment('变动金额');
             $table->timestamps();
