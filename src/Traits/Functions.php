@@ -284,8 +284,17 @@ trait Functions
             $res = DriverRealTimeLocation::query()
                 ->where('user_id', $user_id)
                 ->first(['lat', 'lng', 'created_at']);
-            $res->time = $res->created_at->timestamp;
-            return $res->toArray();
+            if ($res) {
+                $res->time = $res->created_at->timestamp;
+                unset($res->created_at);
+                return $res->toArray();
+            } else {
+                return [
+                    'lat' => '30.58164',
+                    'lng' => '114.321591',
+                    'time' => time()
+                ];
+            }
         } else {
             return json_decode($redis->get($key), true);
         }

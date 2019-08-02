@@ -34,10 +34,10 @@ class CreateBusinessDevelopmentTable extends Migration
             $table->unsignedInteger('bd_id')->comment('商务拓展表id');
             $table->unsignedInteger('user_id')->comment('用户表id');
             $table->tinyInteger('status')->default(1)->comment('状态: -1.失效、 1.正常');
+            $table->unsignedTinyInteger('is_first_bind')->default(1)->comment('是否首次绑定');
             $table->unsignedInteger('image_id')->nullable()->comment('商户签约PDF,图片表id');
             $table->timestamps();
         });
-
 
         DB::statement("ALTER TABLE `business_development_user` comment '商务拓展关联用户表'");
     }

@@ -21,14 +21,13 @@ class CreateDriverInfoTable extends Migration
             $table->unsignedTinyInteger('evaluation_score')->default(100)->comment('信用分');
             $table->unsignedTinyInteger('type')->default(100)->comment('1.专职、 2. 兼职');
             $table->unsignedInteger('comment_num')->default(0)->comment('评分人数');
-            $table->string('vehicle_number', 10)->default('')->comment('车牌号码');
-            $table->timestamp('fist_drive_at')->nullable()->comment('初次开车时间');
+            $table->timestamp('blacklist_at')->nullable()->comment('拉黑限制时间');
             $table->timestamps();
 
             $table->unique('user_id');
         });
 
-        DB::statement("ALTER TABLE `driver_info` comment '司机/专送员信息表'");
+        DB::statement("ALTER TABLE `driver_info` comment '专送员信息表'");
     }
 
     /**

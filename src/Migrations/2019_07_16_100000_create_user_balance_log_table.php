@@ -24,7 +24,8 @@ class CreateUserBalanceLogTable extends Migration
             4.退款、
             5.兼职骑手单活动记录、
             6.充值赠送、
-            7.专送员活跃活动奖励、');
+            7.专送员活跃活动奖励、
+            8.专送员七夕活动奖励、');
             $table->unsignedBigInteger('target_id')->comment('相关单据编号');
             $table->decimal('amount', 10, 2)->comment('变动金额');
             $table->timestamps();
