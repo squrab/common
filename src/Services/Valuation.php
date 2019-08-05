@@ -18,6 +18,7 @@ use SquRab\Common\Models\SysConf;
 class Valuation
 {
     private $config;
+    private $temperature = 34.5;
 
     /**
      * 获取配置
@@ -136,12 +137,13 @@ class Valuation
                     if (in_array($weather, $value['type']) && $this->config['is_open_weather_fee']) {
                         $one['weather'] = $weather;
                         $one['fee'] = $value['fee'];
-                        return $one;
                     } else {
                         $one['weather'] = $weather;
                         $one['fee'] = 0;
-                        return $one;
                     }
+                    if ((int)$one['fee'] === 0 && (real)current($response['lives'])['temperature'] > $this->temperature)
+                        $one['fee'] = 2;
+                    return $one;
                 }
             }
         }
