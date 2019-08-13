@@ -142,7 +142,7 @@ class Valuation
                         $one['fee'] = 0;
                     }
                     if ((int)$one['fee'] === 0 && (real)current($response['lives'])['temperature'] > $this->temperature)
-                        $one['fee'] = 2;
+                        $one['fee'] = 1;
                     return $one;
                 }
             }
