@@ -282,6 +282,7 @@ trait Functions
         $key = 'location_uid:' . $user_id;
         if ($redis->exists($key) === 0) {
             $res = DriverRealTimeLocation::query()
+                ->orderByDesc('created_at')
                 ->where('user_id', $user_id)
                 ->first(['lat', 'lng', 'created_at']);
             if ($res) {
