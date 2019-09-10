@@ -11,9 +11,8 @@ namespace SquRab\Common\Services;
 
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\DB;
 use SquRab\Common\Exception\ErrorException;
-use SquRab\Common\Models\RegionOpened;
-use SquRab\Common\Models\SysConf;
 
 class Valuation
 {
@@ -26,7 +25,7 @@ class Valuation
      */
     public function __construct()
     {
-        $this->config = json_decode(SysConf::query()->where('c_key', 'order_premium')->value('c_value'), true);
+        $this->config = json_decode(DB::table('sys_conf')->where('c_key', 'order_premium')->value('c_value'), true);
     }
 
     /**
@@ -64,7 +63,7 @@ class Valuation
     public function riverFee(int $adCode, int $start_district, int $end_district)
     {
         if ($this->config['is_open_river_fee']) {
-            $openCity = RegionOpened::query()->pluck('region_id')->toArray();
+            $openCity = DB::table('region_opened')->pluck('region_id')->toArray();
             if (in_array($adCode, $openCity)) {
                 switch ($adCode) {
                     case 420100:

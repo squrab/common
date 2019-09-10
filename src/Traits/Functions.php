@@ -9,7 +9,6 @@
 
 namespace SquRab\Common\Traits;
 
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use SquRab\Common\Models\DriverRealTimeLocation;
 use SquRab\Common\Models\User;
