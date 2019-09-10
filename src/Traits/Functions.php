@@ -9,22 +9,13 @@
 
 namespace SquRab\Common\Traits;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use SquRab\Common\Models\DriverRealTimeLocation;
-use SquRab\Common\Models\User;
-use SquRab\Common\Models\Coupon;
 use GuzzleHttp\Client as HttpClient;
 use SquRab\Common\Services\Redis;
 
 trait Functions
 {
-    public function dateAt($timestamp)
-    {
-        if (is_integer($timestamp) || strtotime($timestamp))
-            $timestamp = strtotime($timestamp);
-        return now()->createFromTimestamp($timestamp, 'PRC')->toDateTimeString();
-    }
-
     public function treeData(array $data, int $pid = 0)
     {
         $result = [];
@@ -164,7 +155,7 @@ trait Functions
     {
         $start = now()->createFromTimeString('2018-12-01 00:00:00');
         $diff = $start->diffInMonths();
-        $custom_id = User::query()->where('user_type', $user_type)->pluck('custom_id')->toArray();
+        $custom_id = DB::table('user')->where('user_type', $user_type)->pluck('custom_id')->toArray();
         if ($custom_id) {
             $arr = [];
             foreach ($custom_id as $item) {
@@ -257,7 +248,7 @@ trait Functions
     public function creatCouponNumber()
     {
         $num = date('Ymd');
-        $max = Coupon::query()->where('coupon_sn', 'like', "$num%")->max('coupon_sn');
+        $max = DB::table('coupon')->where('coupon_sn', 'like', "$num%")->max('coupon_sn');
         if ($max) {
             $round = str_replace($num, '', $max);
             if ($round < 9)
@@ -280,7 +271,7 @@ trait Functions
         $redis = (new Redis())::connection();
         $key = 'location_uid:' . $user_id;
         if ($redis->exists($key) === 0) {
-            $res = DriverRealTimeLocation::query()
+            $res = DB::table('driver_real_time_location')
                 ->orderByDesc('created_at')
                 ->where('user_id', $user_id)
                 ->first(['lat', 'lng', 'created_at']);
