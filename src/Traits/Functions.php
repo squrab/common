@@ -276,7 +276,7 @@ trait Functions
                 ->where('user_id', $user_id)
                 ->first(['lat', 'lng', 'created_at']);
             if ($res) {
-                $res->time = $res->created_at->timestamp;
+                $res->time = now()->timestamp(strtotime($res->created_at) ?: time())->timestamp;
                 unset($res->created_at);
                 return $res->toArray();
             } else {
