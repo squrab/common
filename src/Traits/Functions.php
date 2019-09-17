@@ -276,9 +276,10 @@ trait Functions
                 ->where('user_id', $user_id)
                 ->first(['lat', 'lng', 'created_at']);
             if ($res) {
-                $res->time = now()->timestamp(strtotime($res->created_at) ?: time())->timestamp;
-                unset($res->created_at);
-                return $res->toArray();
+                $one = $res->toArray();
+                $one['time'] = now()->timestamp(strtotime($res->created_at) ?: time())->timestamp;
+                unset($one['created_at']);
+                return $one;
             } else {
                 return [
                     'lat' => '30.58164',
