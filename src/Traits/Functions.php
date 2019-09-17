@@ -275,17 +275,17 @@ trait Functions
                 ->orderByDesc('created_at')
                 ->where('user_id', $user_id)
                 ->first(['lat', 'lng', 'created_at']);
-            if ($res) {
-                $one = $res->toArray();
-                $one['time'] = now()->timestamp(strtotime($res->created_at) ?: time())->timestamp;
-                unset($one['created_at']);
-                return $one;
-            } else {
+            if (is_null($res)) {
                 return [
                     'lat' => '30.58164',
                     'lng' => '114.321591',
                     'time' => time()
                 ];
+            } else {
+                $one = (array)$res;
+                $one['time'] = now()->timestamp(strtotime($one['created_at']) ?: time())->timestamp;
+                unset($one['created_at']);
+                return $one;
             }
         } else {
             return json_decode($redis->get($key), true);
