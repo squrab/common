@@ -20,13 +20,19 @@ class BaiDu
         'token' => 'https://aip.baidubce.com/oauth/2.0/token',
         'id_card' => 'https://aip.baidubce.com/rest/2.0/ocr/v1/idcard'
     ];
+    private static $http;
 
+    /**
+     * 百度文字识别
+     * BaiDu constructor.
+     * @throws ErrorException
+     */
     public function __construct()
     {
         $redis = (new Redis())::connection();
+        self::$http = new Client();
         if ($redis->exists($this->cache_key) === 0) {
-            $http = new Client();
-            $result = $http->post($this->base_url['token'], [
+            $result = self::$http->post($this->base_url['token'], [
                 'query' => [
                     'grant_type' => 'client_credentials',
                     'client_id' => config('squrab.baidu.key'),
@@ -50,10 +56,14 @@ class BaiDu
 
     }
 
-    public function id_card(string $filepath)
+    /**
+     * 身份证
+     * @param string $filepath
+     * @return bool|mixed
+     */
+    public function idCard(string $filepath)
     {
-        $http = new Client();
-        $result = $http->post($this->base_url['id_card'], [
+        $result = self::$http->post($this->base_url['id_card'], [
             'query' => [
                 'access_token' => $this->secret
             ],
@@ -68,6 +78,29 @@ class BaiDu
             return json_decode($result->getBody()->getContents(), true);
         }
 
-        return [];
+        return false;
+    }
+
+    /**
+     * 营业执照
+     * @param string $filepath
+     * @return bool|mixed
+     */
+    public function businessLicense(string $filepath)
+    {
+        $result = self::$http->post($this->base_url['id_card'], [
+            'query' => [
+                'access_token' => $this->secret
+            ],
+            'form_params' => [
+                'image' => base64_encode(file_get_contents($filepath)),
+            ]
+        ]);
+
+        if ($result->getStatusCode() === 200) {
+            return json_decode($result->getBody()->getContents(), true);
+        }
+
+        return false;
     }
 }
