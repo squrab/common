@@ -18,7 +18,8 @@ class BaiDu
     private $secret;
     private $base_url = [
         'token' => 'https://aip.baidubce.com/oauth/2.0/token',
-        'id_card' => 'https://aip.baidubce.com/rest/2.0/ocr/v1/idcard'
+        'id_card' => 'https://aip.baidubce.com/rest/2.0/ocr/v1/idcard',
+        'business_license' => 'https://aip.baidubce.com/rest/2.0/ocr/v1/business_license'
     ];
     private static $http;
 
@@ -88,7 +89,7 @@ class BaiDu
      */
     public function businessLicense(string $filepath)
     {
-        $result = self::$http->post($this->base_url['id_card'], [
+        $result = self::$http->post($this->base_url['business_license'], [
             'query' => [
                 'access_token' => $this->secret
             ],
