@@ -17,9 +17,10 @@ define('UNKNOWN_ERROR_CODE', 20000);//业务处理失败
 define('INVALID_TOKEN_CODE', 20001);//无效的访问令牌
 
 define('INVALID_PARAMETER_CODE', 40001);//参数无效
-define('ERROR_PARAMETER_CODE', 40002);//服务器处理错误，参数不符合预期
+define('ERROR_PARAMETER_CODE', 40002);//条件不符
+define('SERVER_DISPOSE_CODE', 40003);//处理错误
 
-define('SEVER_ERROR_CODE', 50001);//服务器错误
+define('SERVER_ERROR_CODE', 50001);//服务器错误
 define('THROTTLE_REQUEST_CODE', 50002);//请求超限
 define('METHOD_NOT_ALLOWED_CODE', 50003);//请求方法错误
 define('NOT_FOUND_HTTP_CODE', 50004);//路由未找到
@@ -50,7 +51,7 @@ trait Response
      * @param array $data
      * @return \Illuminate\Http\JsonResponse
      */
-    public function success(array $data = [])
+    public function success(?array $data = null)
     {
         return response()->json([
             'code' => SUCCESS_CODE,
